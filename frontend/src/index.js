@@ -6,6 +6,7 @@ import { createBrowserRouter, Route, RouterProvider} from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path:"/",
         element:<HomeScreen />
+      },
+      {
+        path:"/product/:id",
+        element:<ProductScreen />
       }
     ]
   }
