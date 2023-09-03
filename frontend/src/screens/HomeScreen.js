@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
+import React from 'react'
 import {Row, Col} from "react-bootstrap"
 import Product from '../components/Product.js'
+import Message from "../components/Message"
+import { useGetProductsQuery } from '../slices/productsApiSlice.js'
+import Loader from "../components/Loader"
 
 const HomeScreen = () => {
 
-  const [products, setProducts] = useState([]);
+  const {data:products, isLoading, error} = useGetProductsQuery();
 
-  useEffect(() => {
-    fetchProducts();
-  }, [])
 
-  async function fetchProducts() {
-    const {data} = await axios.get('/api/products');
-    setProducts(data);
-  }
 
   return (
     <>
-        <h1>Latest Products</h1>
+        {isLoading ? (<Loader />) : error ? (<Message variant='danger'>
+          {error?.data?.message || error.error}
+        </Message>) : (<><h1>Latest Products</h1>
         <Row>
             {products.map((product) => {
                 return (<Col sm={12} md={6} lg={4} xl={3}>
                     <Product key={product._id} product={product} />
                 </Col>)
             })}
-        </Row>
+        </Row></>) }
+        
     </>
   )
 }
