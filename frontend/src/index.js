@@ -36,6 +36,10 @@ const router = createBrowserRouter([
         element:<HomeScreen />
       },
       {
+        path:"/page/:pageNumber",
+        element:<HomeScreen />
+      },
+      {
         path:"/product/:id",
         element:<ProductScreen />
       },
