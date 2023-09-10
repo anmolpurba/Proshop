@@ -2,8 +2,8 @@ import express from 'express';
 import path from 'path';
 import connectDB from './config/db.js';
 import cookieParser from "cookie-parser"
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 const port = process.env.PORT || 5000;
 import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
